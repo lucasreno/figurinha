@@ -18,11 +18,13 @@ export class AutoLoginGuard implements CanLoad {
       filter(val => val !== null),
       take(1),
       map(isAuthenticated => {
-        console.log("Auto login :)")
-        if(isAuthenticated)
-          this.router.navigateByUrl('/home')
-        else
+        if(isAuthenticated){
+          console.log("Auto login :)")
+          this.router.navigateByUrl('/home');
+          false
+        }else{
           return true;
+        }
       })
     );
   }
